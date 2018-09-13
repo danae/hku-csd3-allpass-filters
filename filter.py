@@ -34,16 +34,9 @@ class Filter:
     return output_buffer
 
   # Apply the filter to the impulse and return the impluse response
-  def test(self, length):
-    start_time = time()
-
-    input_buffer = [1]
-    output_buffer = self(input_buffer,length - len(input_buffer))
-
-    end_time = time()
-    print("Execution time: {} ms".format((end_time - start_time) * 1000))
-
-    return output_buffer
+  def impulse_response(self, length):
+    impulse = [1]
+    return self(impulse, length - len(impulse))
 
 
 # Delay class

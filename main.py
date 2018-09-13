@@ -4,10 +4,7 @@ from filter import AllPassFilter
 # Main function
 def main():
   filter = AllPassFilter(8 ,0.167772)
-  test_results = filter.test(25)
-
-  for n, y in enumerate(test_results):
-    print("y[{}] = {}".format(n, y))
+  test_results = filter.impulse_response(1000)
 
 
 # Execute the main function
