@@ -1,0 +1,5 @@
+# Ignore cache from Python
+/__pycache__/
+
+# Ignore resources
+/resources/
