@@ -1,11 +1,13 @@
-from filter import Filter
+from filter import AllPassFilter
+
 
 # Main function
 def main():
-  filter = Filter(lambda n, x, y: 0.167772 * (x(n) + y(n - 8)) - x(n - 8))
+  filter = AllPassFilter(8 ,0.167772)
+  test_results = filter.test(25)
 
-  for n, (x, y) in filter.test(25).items():
-    print("x[{0}] = {1}, y[{0}] = {2}".format(n, x, y))
+  for n, y in enumerate(test_results):
+    print("y[{}] = {}".format(n, y))
 
 
 # Execute the main function
