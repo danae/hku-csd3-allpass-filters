@@ -9,7 +9,7 @@ class Filter:
     self.function = function
 
   # Apply the filter to an input buffer and return the output buffer
-  def __call__(self, input_buffer, overhead = 0):
+  def __call__(self, input_buffer):
     # Create the output buffer
     output_buffer = []
 
@@ -21,13 +21,13 @@ class Filter:
     def y(n):
       if n in range(len(output_buffer)):
         return output_buffer[n]
-      elif n in range(len(input_buffer) + overhead):
+      elif n in range(len(input_buffer)):
         return self.function(n, x, y)
       else:
         return 0
 
     # Iterate over the input buffer and apply the filter to each sample
-    for n in range(len(input_buffer) + overhead):
+    for n in range(len(input_buffer)):
       output_buffer.append(y(n))
 
     # Return the output buffer
@@ -35,8 +35,7 @@ class Filter:
 
   # Apply the filter to the impulse and return the impluse response
   def impulse_response(self, length):
-    impulse = [1]
-    return self(impulse, length - len(impulse))
+    return self([1] + [0] * (length - 1))
 
 
 # Delay class
